@@ -6,14 +6,17 @@ import { User } from '../model/user';
 })
 export class LoginService {
   user: User = {
-    user:'admin',
+    user: 'admin',
     password: 'admin'
-  }
-
-  validate(user: string, password: string) {
-    if (this.user.user === user && this.user.password === password) 
-       return true
-    else 
-      return false
   };
+
+  // Função para validar as credenciais do usuário
+  validate(user: string, password: string) {
+    if (this.user.user === user && this.user.password === password) {
+      // Compara as credenciais fornecidas com as credenciais de usuário padrão
+      return true; // Retorna verdadeiro se as credenciais forem válidas
+    } else {
+      return false; // Retorna falso se as credenciais forem inválidas
+    }
+  }
 }

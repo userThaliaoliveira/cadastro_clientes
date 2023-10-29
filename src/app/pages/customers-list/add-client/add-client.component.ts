@@ -9,11 +9,12 @@ import { Router } from '@angular/router';
 export class AddClientComponent {
   
   constructor(private router: Router) {
-
+    // Construtor da classe AddClientComponent
   }
 
+  // Função que redireciona para a edição de cliente com o ID fornecido
   goToCustomerEdit(id: number) {
     this.router.navigate(['customersEdit', id]);
+    // Usa o serviço de roteamento para navegar para a página de edição do cliente com o ID especificado
   }
-
 }

@@ -14,31 +14,31 @@ export class ListComponent implements OnInit {
   customerIdSelectedToDelete: number = -1;
 
   constructor(private customerService: CustomerService, private router: Router) {
-
+    // Construtor da classe ListComponent
   }
 
   ngOnInit(): void {
+    // Carrega a lista de clientes ao inicializar o componente
     this.customers = this.customerService.getList();
   }
 
+  // Função que redireciona para a edição de cliente com o ID fornecido
   goToCustomerEdit(id: number) {
     this.router.navigate(['customersEdit', id]);
   }
 
-  delete(id: number, name:string) {
-
-    var answer = window.confirm(`Do you really want to delete the customer ${name}?`);
+  // Função para excluir um cliente com confirmação
+  delete(id: number, name: string) {
+    // Exibe uma caixa de diálogo de confirmação
+    var answer = window.confirm(`Você realmente deseja excluir o cliente ${name}?`);
 
     if (answer) {
+      // Se o usuário confirmar, exclui o cliente e atualiza a lista
       this.customerService.delete(id);
       this.ngOnInit();
-    }
-    else {
+    } else {
+      // Se o usuário cancelar, redireciona de volta para a lista de clientes
       this.router.navigate(['customersList']);
     }
-
   }
-
-
 }
-

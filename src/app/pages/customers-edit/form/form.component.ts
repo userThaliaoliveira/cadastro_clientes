@@ -19,14 +19,16 @@ export class FormComponent implements OnInit {
     private customerService: CustomerService,
     private toastr: ToastrService,
     private router: Router) {
+    // Inicializa o formulário do cliente com campos vazios e validações
     this.customerForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(6)]),
       birthdate: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email])
     });
+  }
 
-  };
   ngOnInit() {
+    // Obtém o ID do cliente da rota e preenche o formulário se um ID válido estiver presente
     const getId = Number(this.route.snapshot.paramMap.get('id'));
     if (getId) {
       this.id = getId;
@@ -37,22 +39,26 @@ export class FormComponent implements OnInit {
         birthdate: new FormControl(currentCustomer?.birthdate, [Validators.required]),
         email: new FormControl(currentCustomer?.email, [Validators.required, Validators.email])
       });
-    };
-  };
+    }
+  }
 
   onSubmit(customer: Customer) {
     try {
-      if (this.id === -1)
+      if (this.id === -1) {
+        // Adiciona um novo cliente
         this.customerService.add(customer);
-      else {
+      } else {
+        // Atualiza um cliente existente
         customer.id = this.id;
         this.customerService.update(customer);
       }
-      this.router.navigate(['customersList'])
-      this.toastr.success('Client saved successfully', 'Success!')
+      // Redireciona para a lista de clientes e exibe uma mensagem de sucesso
+      this.router.navigate(['customersList']);
+      this.toastr.success('Cliente salvo com sucesso', 'Sucesso!');
     } catch (error) {
-      this.toastr.error('Error while saving client', 'Error!');
-      console.log(error)
-    };
-  };
-};
+      // Em caso de erro, exibe uma mensagem de erro e registra o erro no console
+      this.toastr.error('Erro ao salvar o cliente', 'Erro!');
+      console.log(error);
+    }
+  }
+}
