@@ -1,0 +1,28 @@
+div {
+    display: flex;
+    justify-content: center; 
+}
+
+form {
+    width: 70%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+.btn-group {
+    margin-right: 2rem;
+    width: 25%
+}
+.btn-danger{
+    background-color:rgb(235, 51, 121);
+    border: none;
+}
+
+.btn-success{
+    background-color: rgb(199, 46, 104);
+    border: none;
+
+}

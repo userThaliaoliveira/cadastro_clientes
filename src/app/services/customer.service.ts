@@ -1,71 +1,71 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../model/customer';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-
-
-  customers: Customer[] = []
+  customers: Customer[] = [];
 
   constructor() {
 
-    const customer:Customer = {
-      id: self.crypto.randomUUID(),
-      name: "Carlos",
-      email: "carlos@carlos.com",
-      dateOfBirth: new Date("1984-06-18")
+    let customer: Customer = {
+      id: 1,
+      name: 'paulo',
+      email: "paulinho@email.com",
+      birthdate: new Date("1990-10-07")
+    }
+    let customer2: Customer = {
+      id: 2,
+      name: 'claudio',
+      email: "claudio@email.com",
+      birthdate: new Date("1975-09-20")
     }
 
-    this.customers.push(customer);
+    this.customers.push(customer)
+    this.customers.push(customer2)
+  };
 
-    const customer2:Customer = {
-      id: self.crypto.randomUUID(),
-      name: "Bete",
-      email: "bete@bete.com",
-      dateOfBirth: new Date("1984-06-30")
-    }
-
-    this.customers.push(customer2);
-
-  }
-
-  getList() : Customer[]{
+  getList(): Customer[] {
     return this.customers;
-  }
+  };
 
-  getById(id: string){
-    return this.customers.find( customer => customer.id === id);
-  }
+  getById(id: number) {
+    return this.customers.find(customer => customer.id === id);
+  };
 
-  update(customer: Customer){
-
+  update(customer:Customer) {
     let searchCustomer = this.getById(customer.id);
 
     if( searchCustomer){
       searchCustomer.name = customer.name;
       searchCustomer.email = customer.email;
-      searchCustomer.dateOfBirth = customer.dateOfBirth;
+      searchCustomer.birthdate = customer.birthdate;
     }
+  };
 
+  add(customer: Customer) {
+    let previousID = this.getMaxId();
+    console.log (previousID)
 
+    if (previousID)
+      customer.id = previousID + 1;
+    else
+      customer.id = 1;
 
+    this.customers.push(customer);
   }
 
-  delete(id:string){
-    this.customers = this.customers.filter(customer => customer.id !== id);
+  delete(id: number) {
+    const i = this.customers.findIndex(customer => customer.id === id);
+    if (i > -1) {
+      this.customers.splice(i, 1);
+    };
+  };
+
+  getMaxId() {
+    return this.customers.reduce((maxId, current) => {
+      return current.id > maxId ? current.id : maxId
+    }, 0)
   }
-
-  create(customer:Customer){
-
-    let uuid = self.crypto.randomUUID();
-
-    customer.id = uuid;
-
-    this.customers.push(customer)
-
-  }
-
 }

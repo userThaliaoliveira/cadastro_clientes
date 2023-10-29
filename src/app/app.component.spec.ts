@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'projeto-ada-1004-exercicio'`, () => {
+  it(`should have as title 'cadastro_clientes'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('projeto-ada-1004-exercicio');
+    expect(app.title).toEqual('cadastro_clientes');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('projeto-ada-1004-exercicio app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('cadastro_clientes app is running!');
   });
 });

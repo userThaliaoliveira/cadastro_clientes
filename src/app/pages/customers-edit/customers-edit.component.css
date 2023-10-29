@@ -1,0 +1,13 @@
+main {
+    min-height: 65vh;
+    background-color: rgba(240, 134, 175, 0.7);
+
+    }
+
+h1{
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}

@@ -1,0 +1,37 @@
+div {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+div table {
+    width: 90%;
+    border: 2px solid rgba(240, 134, 175, 0.7);
+    border-collapse: collapse; 
+}
+
+tr th, tr td {
+    text-align: center;
+    background-color: rgba(240, 134, 175, 0.7);
+    padding: 0.5rem; 
+}
+
+.listActions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    & button {
+        border: none;
+        padding: 0.5rem 1rem;
+        background-color: rgba(255, 18, 109, 0.7);
+        color: rgba(255, 222, 225, 1);
+        border-radius: 1rem;
+        cursor: pointer; 
+
+        &:hover {
+            background-color: rgba(218, 35, 147, 0.9); 
+            color: white;
+        }
+    }
+}

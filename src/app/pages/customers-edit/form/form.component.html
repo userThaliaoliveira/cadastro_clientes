@@ -1,0 +1,50 @@
+<div>
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Nome:</span>
+            <input type="text" class="form-control" placeholder="Nome" aria-label="Name" aria-describedby="basic-addon1"
+                formControlName="name">
+
+            <div class="invalid-feedback"
+                *ngIf="customerForm.get('name')?.invalid && (customerForm.get('name')?.dirty || customerForm.get('name')?.touched)">
+                <div class="text-danger" *ngIf="customerForm.get('name')?.errors?.['required']">
+                    Nome é obrigatório.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Data de Nascimento:</span>
+            <input type="date" class="form-control" aria-label="Date" aria-describedby="basic-addon3"
+                formControlName='birthdate'>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon2">Email:</span>
+            <input type="email" class="form-control" placeholder="example@email.com" aria-label="Email"
+                aria-describedby="basic-addon2" formControlName='email'>
+
+            <div class="invalid-feedback"
+                *ngIf="customerForm.get('email')?.invalid && (customerForm.get('email')?.dirty || customerForm.get('email')?.touched)">
+                <div class="text-danger" *ngIf="customerForm.get('email')?.errors?.['required']">
+                    E-mail é obrigatório.
+                </div>
+                <div class="text-danger" *ngIf="customerForm.get('email')?.errors?.['email']">
+                    E-mail inválido.
+                </div>
+
+            </div>
+        </div>
+
+        <div class="buttons">
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button type="button" class="btn btn-danger" [routerLink]="['/customersList']">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!customerForm.valid">Salvar</button>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>

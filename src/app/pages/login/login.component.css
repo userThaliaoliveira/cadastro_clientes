@@ -1,0 +1,31 @@
+main {
+    height: 100vh;
+    background: rgb(235, 51, 121);
+    background: linear-gradient(90deg, rgb(199, 46, 104) 0%, rgba(255, 222, 225, 1));
+}
+
+h1 {
+    padding: 10rem;
+    color: white;
+    text-align: center;
+    font-family: 'Dancing Script';
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.container h2 {
+    margin-bottom: 4rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
